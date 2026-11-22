@@ -1,4 +1,6 @@
 
+from pathlib import Path
+
 import pandas as pd
 import joblib
 
@@ -12,8 +14,9 @@ from sklearn.metrics import (
 )
 
 # 1. Load prepared dataset
+BASE_DIR = Path(__file__).resolve().parent
 df = pd.read_csv(
-    "vaaniguard_kannada_prepared.csv",
+    BASE_DIR / "vaaniguard_kannada_prepared.csv",
     encoding="utf-8-sig"
 )
 
@@ -109,7 +112,7 @@ for language in test_df["language_format"].unique():
     ))
 
 # 9. Save trained model
-joblib.dump(model, "vaaniguard_kannada_baseline.pkl")
+joblib.dump(model, BASE_DIR / "vaaniguard_kannada_baseline.pkl")
 
 print("\nModel saved successfully!")
 print("File: vaaniguard_kannada_baseline.pkl")

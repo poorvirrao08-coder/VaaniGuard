@@ -1,7 +1,10 @@
 
+from pathlib import Path
+
 import joblib
 
-model = joblib.load("vaaniguard_cluster_aware_baseline.pkl")
+BASE_DIR = Path(__file__).resolve().parent
+model = joblib.load(BASE_DIR / "vaaniguard_cluster_aware_baseline.pkl")
 
 vectorizer = model.named_steps["tfidf"]
 classifier = model.named_steps["classifier"]

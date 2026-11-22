@@ -1,7 +1,10 @@
 
+from pathlib import Path
+
 import pandas as pd
 
-df = pd.read_csv("vaaniguard_kannada_prepared.csv")
+BASE_DIR = Path(__file__).resolve().parent
+df = pd.read_csv(BASE_DIR / "vaaniguard_kannada_prepared.csv")
 
 print("\nKANNADA PILOT DATASET QUALITY AUDIT")
 

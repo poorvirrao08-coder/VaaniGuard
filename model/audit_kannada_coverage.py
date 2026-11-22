@@ -1,8 +1,10 @@
 
 import pandas as pd
 import re
+from pathlib import Path
 
-df = pd.read_csv("vaaniguard_cleaned_sentinel_dataset.csv")
+BASE_DIR = Path(__file__).resolve().parent
+df = pd.read_csv(BASE_DIR / "vaaniguard_cleaned_sentinel_dataset.csv")
 df = df[["text_cleaned", "binary_label"]].dropna().copy()
 
 df["text_cleaned"] = df["text_cleaned"].astype(str)

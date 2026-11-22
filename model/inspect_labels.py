@@ -1,6 +1,9 @@
+from pathlib import Path
+
 import pandas as pd
 
-df = pd.read_csv("vaaniguard_cleaned_sentinel_dataset.csv")
+BASE_DIR = Path(__file__).resolve().parent
+df = pd.read_csv(BASE_DIR / "vaaniguard_cleaned_sentinel_dataset.csv")
 
 print("SOURCE LABEL DISTRIBUTION:")
 print(df["source_label"].value_counts())

@@ -1,4 +1,6 @@
 
+from pathlib import Path
+
 import pandas as pd
 
 from sklearn.pipeline import Pipeline
@@ -17,7 +19,8 @@ print("\nVAANIGUARD SCENARIO-HELD-OUT MODEL EVALUATION")
 print("=" * 60)
 
 # Load the saved scenario-held-out dataset
-df = pd.read_csv("vaaniguard_scenario_heldout_split.csv")
+BASE_DIR = Path(__file__).resolve().parent
+df = pd.read_csv(BASE_DIR / "vaaniguard_scenario_heldout_split.csv")
 
 train = df[df["split"] == "training"].copy()
 test = df[df["split"] == "evaluation"].copy()
@@ -162,7 +165,7 @@ output["correct"] = (
 )
 
 output.to_csv(
-    "vaaniguard_scenario_evaluation_predictions.csv",
+    BASE_DIR / "vaaniguard_scenario_evaluation_predictions.csv",
     index=False
 )
 

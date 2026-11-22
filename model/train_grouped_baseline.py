@@ -1,4 +1,6 @@
 
+from pathlib import Path
+
 import pandas as pd
 import joblib
 
@@ -11,7 +13,8 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 from scipy.sparse.csgraph import connected_components
 
 # 1. Load dataset
-df = pd.read_csv("vaaniguard_cleaned_sentinel_dataset.csv")
+BASE_DIR = Path(__file__).resolve().parent
+df = pd.read_csv(BASE_DIR / "vaaniguard_cleaned_sentinel_dataset.csv")
 df = df[["text_cleaned", "binary_label"]].dropna()
 
 df["text_cleaned"] = df["text_cleaned"].astype(str).str.strip()
@@ -126,6 +129,6 @@ print("\nConfusion Matrix:")
 print(confusion_matrix(y_test, y_pred))
 
 # 8. Save separately
-joblib.dump(model, "vaaniguard_grouped_baseline.pkl")
+joblib.dump(model, BASE_DIR / "vaaniguard_grouped_baseline.pkl")
 
 print("\nGrouped model saved successfully!")

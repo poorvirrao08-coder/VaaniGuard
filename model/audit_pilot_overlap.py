@@ -1,9 +1,12 @@
 
+from pathlib import Path
+
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-df = pd.read_csv("vaaniguard_kannada_prepared.csv")
+BASE_DIR = Path(__file__).resolve().parent
+df = pd.read_csv(BASE_DIR / "vaaniguard_kannada_prepared.csv")
 
 train = df[df["split"] == "synthetic_expansion_pilot"].copy()
 test = df[df["split"] == "evaluation_pilot"].copy()

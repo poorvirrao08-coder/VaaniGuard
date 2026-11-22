@@ -1,8 +1,11 @@
 
+from pathlib import Path
+
 import pandas as pd
 from sklearn.model_selection import GroupShuffleSplit
 
-df = pd.read_csv("vaaniguard_kannada_prepared.csv")
+BASE_DIR = Path(__file__).resolve().parent
+df = pd.read_csv(BASE_DIR / "vaaniguard_kannada_prepared.csv")
 
 print("\nSCENARIO-HELD-OUT SPLIT AUDIT")
 print("=" * 55)
@@ -108,7 +111,7 @@ else:
     ])
 
     output.to_csv(
-        "vaaniguard_scenario_heldout_split.csv",
+        BASE_DIR / "vaaniguard_scenario_heldout_split.csv",
         index=False
     )
 

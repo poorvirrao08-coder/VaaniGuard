@@ -1,8 +1,11 @@
 
+from pathlib import Path
+
 import joblib
 
 # Load the trained Kannada-English model
-model = joblib.load("vaaniguard_kannada_baseline.pkl")
+BASE_DIR = Path(__file__).resolve().parent
+model = joblib.load(BASE_DIR / "vaaniguard_kannada_baseline.pkl")
 
 print("\n===== VaaniGuard: Manual Message Testing =====")
 print("Enter a payment-related message.")

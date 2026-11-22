@@ -29,8 +29,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-MODEL_PATH = BASE_DIR / "vaaniguard_kannada_baseline.pkl"
+PROJECT_DIR = Path(__file__).resolve().parent.parent
+MODEL_PATH = PROJECT_DIR / "model" / "vaaniguard_kannada_baseline.pkl"
 
 try:
     model = joblib.load(MODEL_PATH)

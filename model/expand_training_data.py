@@ -1,8 +1,11 @@
 
+from pathlib import Path
+
 import pandas as pd
 
 # Load only the existing training data
-df = pd.read_csv("vaaniguard_scenario_heldout_split.csv")
+BASE_DIR = Path(__file__).resolve().parent
+df = pd.read_csv(BASE_DIR / "vaaniguard_scenario_heldout_split.csv")
 
 train = df[df["split"] == "training"].copy()
 evaluation = df[df["split"] == "evaluation"].copy()
@@ -88,12 +91,12 @@ expanded_dataset = pd.concat(
 
 # Save separate files
 expanded_train.to_csv(
-    "vaaniguard_expanded_training.csv",
+    BASE_DIR / "vaaniguard_expanded_training.csv",
     index=False
 )
 
 expanded_dataset.to_csv(
-    "vaaniguard_expanded_scenario_dataset.csv",
+    BASE_DIR / "vaaniguard_expanded_scenario_dataset.csv",
     index=False
 )
 
